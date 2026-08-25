@@ -1,0 +1,26 @@
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+DerivedData/
+
+# Xcode workspace user settings
+*.xcworkspace/xcuserdata/
+
+# Build artifacts
+build/
+*.o
+*.d
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods (not used here, but just in case)
+Pods/

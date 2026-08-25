@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support – States Visited</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1c1c1e;
+            background: #f2f2f7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 40px 24px 36px;
+            text-align: center;
+        }
+        header .icon {
+            font-size: 56px;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        header h1 {
+            font-size: 30px;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 16px;
+            opacity: 0.75;
+            margin-top: 6px;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 32px auto;
+            padding: 0 24px 64px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1c1c1e;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1c1c1e;
+            margin: 20px 0 6px;
+        }
+        h3:first-child { margin-top: 0; }
+
+        p { margin-bottom: 12px; color: #3a3a3c; }
+        p:last-child { margin-bottom: 0; }
+
+        .faq-item {
+            border-bottom: 1px solid #f2f2f7;
+            padding: 16px 0;
+        }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .faq-q {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1c1c1e;
+            margin-bottom: 6px;
+        }
+        .faq-a {
+            font-size: 14px;
+            color: #3a3a3c;
+            line-height: 1.6;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 4px;
+        }
+        .feature-item {
+            background: #f2f2f7;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .feature-item .emoji { font-size: 28px; margin-bottom: 8px; }
+        .feature-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .feature-item p { font-size: 13px; color: #636366; margin: 0; }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f2f2f7;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 4px;
+        }
+        .contact-box .icon { font-size: 32px; flex-shrink: 0; }
+        .contact-box h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+        .contact-box a {
+            color: #007aff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .contact-box a:hover { text-decoration: underline; }
+        .contact-box p { font-size: 13px; color: #636366; margin: 2px 0 0; }
+
+        .privacy-link {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .privacy-link a {
+            color: #007aff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .privacy-link a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #8e8e93;
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="icon">🇺🇸</div>
+    <h1>States Visited</h1>
+    <p>Track, explore, and plan your journey across the USA</p>
+</header>
+
+<main>
+
+    <!-- Features overview -->
+    <div class="card">
+        <h2>What you can do</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="emoji">🗺️</div>
+                <h4>Track Visited States</h4>
+                <p>Toggle states on/off and see your progress toward all 50.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">📷</div>
+                <h4>Add Photos</h4>
+                <p>Attach photos and create collages for each state you've visited.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">📅</div>
+                <h4>Log Visit Dates</h4>
+                <p>Record when you visited each state with start and end dates.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">📍</div>
+                <h4>Track Cities</h4>
+                <p>Add cities you visited and see them pinned on the map.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">⭐</div>
+                <h4>Bucket List</h4>
+                <p>Save states you want to visit next and search for flights.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">✈️</div>
+                <h4>Flight Search</h4>
+                <p>Search Google Flights from your home airport to bucket list states.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I mark a state as visited?</p>
+            <p class="faq-a">Open the <strong>States</strong> tab. Each state row has a toggle on the right — flip it on to mark it visited. The state will appear highlighted on the map and move to your Visited list.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I add photos to a state?</p>
+            <p class="faq-a">Tap a visited state to open its detail page, then tap the <strong>+</strong> button in the Photos section. You can import from your Camera Roll or choose an album. Photos are stored on your device only.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I add a visit date?</p>
+            <p class="faq-a">On the state detail page, tap the <strong>+</strong> next to "Visits" to log a trip with an optional start and end date. You can record multiple trips to the same state.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I add a city and see it on the map?</p>
+            <p class="faq-a">Open a state's detail page and tap the <strong>+</strong> in the Cities section. As you type, autocomplete suggestions appear. Select a city to pin it. Tap the pin in the list to jump to it on the map.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I set my home state?</p>
+            <p class="faq-a">Open a state's detail page and tap the <strong>house icon</strong> in the top-right corner. It highlights your home state with a special icon throughout the app.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I share my visited states?</p>
+            <p class="faq-a">On the <strong>States</strong> tab, tap the share icon (↑) in the top-right corner. The app generates a visual image with two sections — your visited states and your states to visit — each showing the state flag and name. You can save it or share it anywhere.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I share a state's photo collage?</p>
+            <p class="faq-a">Open a visited state that has photos, then tap the share icon in the top-right corner. This generates a 1080×1080 collage of that state's photos.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How does the Bucket List work?</p>
+            <p class="faq-a">Open the <strong>Bucket List</strong> tab and tap the <strong>+</strong> next to any state in the "Add States" section. Bucket-listed states appear at the top. Tap a state to search for flights. Swipe left on a bucket list state to remove it.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I set up flight search?</p>
+            <p class="faq-a">Tap the ✈ icon in the Bucket List toolbar. You'll need two things:
+                <br>1. Your <strong>home airport IATA code</strong> (e.g., JFK, LAX, ORD).
+                <br>2. A free <strong>SerpApi API key</strong> from <a class="contact-link" style="color:#007aff" href="https://serpapi.com" target="_blank">serpapi.com</a> (free plan includes 100 searches/month — no credit card required).
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I see stop details for a flight?</p>
+            <p class="faq-a">In the flight results list, tap the <strong>▾ chevron</strong> on the right side of any flight row to expand it. You'll see each segment's departure/arrival times, airline, flight number, aircraft, and layover duration and airport.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I book a flight?</p>
+            <p class="faq-a">Expand a flight row and tap <strong>Book on Google Flights</strong>, or swipe the row from left to right to reveal the blue Book action. Either option opens Google Flights pre-filled with your route and date so you can complete the booking.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">Will I lose my data if I delete the app?</p>
+            <p class="faq-a">Yes — all data (visited states, photos, cities, visits, bucket list) is stored locally on your device. Deleting the app removes all associated data permanently. There is no cloud backup at this time.</p>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+        <h2>Get in Touch</h2>
+        <p>Found a bug or have a feature request? Send an email and I'll get back to you as soon as possible.</p>
+        <div class="contact-box">
+            <div class="icon">✉️</div>
+            <div>
+                <h4>Email Support</h4>
+                <a href="mailto:ricardofong@gmail.com">ricardofong@gmail.com</a>
+                <p>Typical response within 2–3 business days</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="privacy-link">
+        <a href="privacy.html">Privacy Policy →</a>
+    </div>
+
+</main>
+
+<footer>
+    &copy; 2025 Ricardo Fong &nbsp;·&nbsp; States Visited
+</footer>
+
+</body>
+</html>

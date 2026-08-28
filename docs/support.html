@@ -138,6 +138,15 @@
             color: #8e8e93;
             padding: 24px;
         }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #8e8e93;
+            margin-bottom: 12px;
+        }
     </style>
 </head>
 <body>
@@ -175,6 +184,16 @@
                 <p>Add cities you visited and see them pinned on the map.</p>
             </div>
             <div class="feature-item">
+                <div class="emoji">🏛️</div>
+                <h4>State Facts</h4>
+                <p>See capital, statehood year, area, population, state bird, flower, and nickname for every state.</p>
+            </div>
+            <div class="feature-item">
+                <div class="emoji">📊</div>
+                <h4>Stats &amp; Achievements</h4>
+                <p>Track your progress with a visual dashboard, regional breakdown, year chart, and 16 achievements.</p>
+            </div>
+            <div class="feature-item">
                 <div class="emoji">⭐</div>
                 <h4>Bucket List</h4>
                 <p>Save states you want to visit next and search for flights.</p>
@@ -184,6 +203,11 @@
                 <h4>Flight Search</h4>
                 <p>Search Google Flights from your home airport to bucket list states.</p>
             </div>
+            <div class="feature-item">
+                <div class="emoji">🖥️</div>
+                <h4>iPad Split View</h4>
+                <p>On iPad, browse the states list on the left while the map and state details fill the right panel.</p>
+            </div>
         </div>
     </div>
 
@@ -191,9 +215,16 @@
     <div class="card">
         <h2>Frequently Asked Questions</h2>
 
+        <p class="section-label">General</p>
+
         <div class="faq-item">
             <p class="faq-q">How do I mark a state as visited?</p>
-            <p class="faq-a">Open the <strong>States</strong> tab. Each state row has a toggle on the right — flip it on to mark it visited. The state will appear highlighted on the map and move to your Visited list.</p>
+            <p class="faq-a">Open the <strong>States</strong> tab. Each state row has a toggle on the right — flip it on to mark it visited. The state will appear highlighted on the map.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">What are State Facts?</p>
+            <p class="faq-a">Every state detail page includes a <strong>State Facts</strong> section at the top showing the capital city, year of statehood, area (sq mi), population, state bird, state flower, and official nickname. These facts appear for both visited and unvisited states.</p>
         </div>
 
         <div class="faq-item">
@@ -218,13 +249,64 @@
 
         <div class="faq-item">
             <p class="faq-q">How do I share my visited states?</p>
-            <p class="faq-a">On the <strong>States</strong> tab, tap the share icon (↑) in the top-right corner. The app generates a visual image with two sections — your visited states and your states to visit — each showing the state flag and name. You can save it or share it anywhere.</p>
+            <p class="faq-a">Tap the <strong>share icon (↑)</strong> in the top-right corner of the States tab (on iPhone) or the sidebar toolbar (on iPad). The app generates a visual image showing your visited states and states still to visit, each with the state flag and name. You can save or share it anywhere.</p>
         </div>
 
         <div class="faq-item">
             <p class="faq-q">How do I share a state's photo collage?</p>
-            <p class="faq-a">Open a visited state that has photos, then tap the share icon in the top-right corner. This generates a 1080×1080 collage of that state's photos.</p>
+            <p class="faq-a">Open a visited state that has photos, then tap the <strong>share icon</strong> in the top-right corner. This generates a collage of that state's photos.</p>
         </div>
+
+        <div class="faq-item">
+            <p class="faq-q">Will I lose my data if I delete the app?</p>
+            <p class="faq-a">Yes — all data (visited states, photos, cities, visits, bucket list) is stored locally on your device. Deleting the app removes all associated data permanently. There is no cloud backup at this time.</p>
+        </div>
+
+        <p class="section-label" style="margin-top:20px;">Stats &amp; Achievements</p>
+
+        <div class="faq-item">
+            <p class="faq-q">What is the Stats tab?</p>
+            <p class="faq-a">The <strong>Stats</strong> tab (fourth tab) gives you a full overview of your travels:
+                <br>• A circular <strong>progress ring</strong> showing how many of the 50 states you've visited.
+                <br>• <strong>Overview stats</strong> — total states, cities explored, photos added, trips logged, and achievements earned.
+                <br>• A <strong>Progress by Region</strong> bar chart breaking down visited states by US census region (Northeast, Southeast, Midwest, South, West).
+                <br>• A <strong>States First Visited by Year</strong> bar chart showing how your travels have grown over time.
+                <br>• An <strong>Achievements</strong> section listing all 16 milestones.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">What are Achievements?</p>
+            <p class="faq-a">Achievements are 16 milestones that unlock automatically as you visit states. They range from <em>First Step</em> (mark your first state) to <em>All 50 States!</em>, plus special ones like <em>Founding 13</em>, <em>Four Corners</em>, <em>Great Lakes Explorer</em>, <em>Coast to Coast</em>, <em>Aloha Spirit</em>, <em>Last Frontier</em>, and more. Locked achievements are shown in grey so you can see what's coming next.</p>
+        </div>
+
+        <p class="section-label" style="margin-top:20px;">iPad</p>
+
+        <div class="faq-item">
+            <p class="faq-q">How does the app work on iPad?</p>
+            <p class="faq-a">On iPad the <strong>States</strong> tab uses a split-view layout:
+                <br>• <strong>Left sidebar</strong> — the full states list with toggles, a filter bar, a search field, and toolbar buttons for sharing and appearance.
+                <br>• <strong>Right panel (top half)</strong> — the interactive US map, always visible, highlighting whichever state is selected.
+                <br>• <strong>Right panel (bottom half)</strong> — the selected state's details. Unvisited states show State Facts only; visited states show State Facts plus Visits, Cities, and Photos.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I select a state on iPad?</p>
+            <p class="faq-a">Tap any state row in the left sidebar. The map highlights that state and its details appear in the bottom-right panel. You can tap visited <em>and</em> unvisited states — unvisited states show their State Facts so you can explore before you go.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I deselect a state and zoom the map back out on iPad?</p>
+            <p class="faq-a">Tap the currently selected state row again to deselect it. Alternatively, tap the <strong>expand-arrows button</strong> (⤢) in the top-right corner of the map to zoom out and clear the selection.</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q">How do I filter the states list on iPad?</p>
+            <p class="faq-a">A segmented filter bar sits at the top of the left sidebar with three options: <strong>All</strong> (default), <strong>Visited</strong>, and <strong>Not Visited</strong>. The filter works together with the search field so you can, for example, search for "New" within only visited states.</p>
+        </div>
+
+        <p class="section-label" style="margin-top:20px;">Bucket List &amp; Flights</p>
 
         <div class="faq-item">
             <p class="faq-q">How does the Bucket List work?</p>
@@ -235,7 +317,7 @@
             <p class="faq-q">How do I set up flight search?</p>
             <p class="faq-a">Tap the ✈ icon in the Bucket List toolbar. You'll need two things:
                 <br>1. Your <strong>home airport IATA code</strong> (e.g., JFK, LAX, ORD).
-                <br>2. A free <strong>SerpApi API key</strong> from <a class="contact-link" style="color:#007aff" href="https://serpapi.com" target="_blank">serpapi.com</a> (free plan includes 100 searches/month — no credit card required).
+                <br>2. A free <strong>SerpApi API key</strong> from <a style="color:#007aff" href="https://serpapi.com" target="_blank">serpapi.com</a> (free plan includes 100 searches/month — no credit card required).
             </p>
         </div>
 
@@ -247,11 +329,6 @@
         <div class="faq-item">
             <p class="faq-q">How do I book a flight?</p>
             <p class="faq-a">Expand a flight row and tap <strong>Book on Google Flights</strong>, or swipe the row from left to right to reveal the blue Book action. Either option opens Google Flights pre-filled with your route and date so you can complete the booking.</p>
-        </div>
-
-        <div class="faq-item">
-            <p class="faq-q">Will I lose my data if I delete the app?</p>
-            <p class="faq-a">Yes — all data (visited states, photos, cities, visits, bucket list) is stored locally on your device. Deleting the app removes all associated data permanently. There is no cloud backup at this time.</p>
         </div>
     </div>
 
@@ -276,7 +353,7 @@
 </main>
 
 <footer>
-    &copy; 2025 Ricardo Fong &nbsp;·&nbsp; States Visited
+    &copy; 2026 Ricardo Fong &nbsp;·&nbsp; States Visited
 </footer>
 
 </body>

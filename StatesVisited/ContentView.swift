@@ -8,6 +8,7 @@ import CoreLocation
 import UniformTypeIdentifiers
 import PhotosUI
 import Photos
+import Charts
 
 // MARK: - Models
 
@@ -94,6 +95,149 @@ let allUSStates: [USState] = [
     .init(id:"SD", name:"South Dakota"), .init(id:"TN", name:"Tennessee"), .init(id:"TX", name:"Texas"), .init(id:"UT", name:"Utah"),
     .init(id:"VT", name:"Vermont"), .init(id:"VA", name:"Virginia"), .init(id:"WA", name:"Washington"), .init(id:"WV", name:"West Virginia"),
     .init(id:"WI", name:"Wisconsin"), .init(id:"WY", name:"Wyoming"), .init(id:"DC", name:"Washington DC")
+]
+
+// MARK: - State Info Data
+
+struct StateInfo {
+    let capital: String
+    let nickname: String
+    let statehood: Int
+    let bird: String
+    let flower: String
+    let areaSqMi: Int
+    let population: Int
+}
+
+let stateInfoData: [String: StateInfo] = [
+    "AL": StateInfo(capital: "Montgomery",   nickname: "The Heart of Dixie",          statehood: 1819, bird: "Yellowhammer",              flower: "Camellia",                 areaSqMi: 52419,  population: 5024279),
+    "AK": StateInfo(capital: "Juneau",       nickname: "The Last Frontier",           statehood: 1959, bird: "Willow Ptarmigan",           flower: "Forget-me-not",            areaSqMi: 663268, population: 733391),
+    "AZ": StateInfo(capital: "Phoenix",      nickname: "The Grand Canyon State",      statehood: 1912, bird: "Cactus Wren",                flower: "Saguaro Blossom",          areaSqMi: 113990, population: 7151502),
+    "AR": StateInfo(capital: "Little Rock",  nickname: "The Natural State",           statehood: 1836, bird: "Northern Mockingbird",       flower: "Apple Blossom",            areaSqMi: 53179,  population: 3011524),
+    "CA": StateInfo(capital: "Sacramento",   nickname: "The Golden State",            statehood: 1850, bird: "California Quail",           flower: "California Poppy",         areaSqMi: 163696, population: 39538223),
+    "CO": StateInfo(capital: "Denver",       nickname: "The Centennial State",        statehood: 1876, bird: "Lark Bunting",               flower: "Rocky Mountain Columbine", areaSqMi: 104094, population: 5773714),
+    "CT": StateInfo(capital: "Hartford",     nickname: "The Constitution State",      statehood: 1788, bird: "American Robin",             flower: "Mountain Laurel",          areaSqMi: 5543,   population: 3605944),
+    "DE": StateInfo(capital: "Dover",        nickname: "The First State",             statehood: 1787, bird: "Blue Hen Chicken",           flower: "Peach Blossom",            areaSqMi: 2489,   population: 989948),
+    "FL": StateInfo(capital: "Tallahassee",  nickname: "The Sunshine State",          statehood: 1845, bird: "Northern Mockingbird",       flower: "Orange Blossom",           areaSqMi: 65758,  population: 21538187),
+    "GA": StateInfo(capital: "Atlanta",      nickname: "The Peach State",             statehood: 1788, bird: "Brown Thrasher",             flower: "Cherokee Rose",            areaSqMi: 59425,  population: 10711908),
+    "HI": StateInfo(capital: "Honolulu",     nickname: "The Aloha State",             statehood: 1959, bird: "Nēnē (Hawaiian Goose)",      flower: "Pua Aloalo",               areaSqMi: 10932,  population: 1455271),
+    "ID": StateInfo(capital: "Boise",        nickname: "The Gem State",               statehood: 1890, bird: "Mountain Bluebird",          flower: "Syringa",                  areaSqMi: 83569,  population: 1839106),
+    "IL": StateInfo(capital: "Springfield",  nickname: "The Prairie State",           statehood: 1818, bird: "Northern Cardinal",          flower: "Violet",                   areaSqMi: 57914,  population: 12812508),
+    "IN": StateInfo(capital: "Indianapolis", nickname: "The Hoosier State",           statehood: 1816, bird: "Northern Cardinal",          flower: "Peony",                    areaSqMi: 36420,  population: 6785528),
+    "IA": StateInfo(capital: "Des Moines",   nickname: "The Hawkeye State",           statehood: 1846, bird: "American Goldfinch",         flower: "Wild Prairie Rose",        areaSqMi: 56273,  population: 3190369),
+    "KS": StateInfo(capital: "Topeka",       nickname: "The Sunflower State",         statehood: 1861, bird: "Western Meadowlark",         flower: "Sunflower",                areaSqMi: 82278,  population: 2937880),
+    "KY": StateInfo(capital: "Frankfort",    nickname: "The Bluegrass State",         statehood: 1792, bird: "Northern Cardinal",          flower: "Goldenrod",                areaSqMi: 40408,  population: 4505836),
+    "LA": StateInfo(capital: "Baton Rouge",  nickname: "The Pelican State",           statehood: 1812, bird: "Brown Pelican",              flower: "Magnolia",                 areaSqMi: 52378,  population: 4657757),
+    "ME": StateInfo(capital: "Augusta",      nickname: "The Pine Tree State",         statehood: 1820, bird: "Black-capped Chickadee",     flower: "White Pine Cone",          areaSqMi: 35380,  population: 1362359),
+    "MD": StateInfo(capital: "Annapolis",    nickname: "The Old Line State",          statehood: 1788, bird: "Baltimore Oriole",           flower: "Black-eyed Susan",         areaSqMi: 12407,  population: 6177224),
+    "MA": StateInfo(capital: "Boston",       nickname: "The Bay State",               statehood: 1788, bird: "Black-capped Chickadee",     flower: "Mayflower",                areaSqMi: 10554,  population: 7029917),
+    "MI": StateInfo(capital: "Lansing",      nickname: "The Great Lakes State",       statehood: 1837, bird: "American Robin",             flower: "Apple Blossom",            areaSqMi: 96714,  population: 10077331),
+    "MN": StateInfo(capital: "Saint Paul",   nickname: "The North Star State",        statehood: 1858, bird: "Common Loon",                flower: "Pink & White Lady's Slipper", areaSqMi: 86936, population: 5706494),
+    "MS": StateInfo(capital: "Jackson",      nickname: "The Magnolia State",          statehood: 1817, bird: "Northern Mockingbird",       flower: "Magnolia",                 areaSqMi: 48432,  population: 2961279),
+    "MO": StateInfo(capital: "Jefferson City", nickname: "The Show-Me State",         statehood: 1821, bird: "Eastern Bluebird",           flower: "White Hawthorn Blossom",   areaSqMi: 69707,  population: 6154913),
+    "MT": StateInfo(capital: "Helena",       nickname: "Big Sky Country",             statehood: 1889, bird: "Western Meadowlark",         flower: "Bitterroot",               areaSqMi: 147040, population: 1084225),
+    "NE": StateInfo(capital: "Lincoln",      nickname: "The Cornhusker State",        statehood: 1867, bird: "Western Meadowlark",         flower: "Goldenrod",                areaSqMi: 77358,  population: 1961504),
+    "NV": StateInfo(capital: "Carson City",  nickname: "The Silver State",            statehood: 1864, bird: "Mountain Bluebird",          flower: "Sagebrush",                areaSqMi: 110572, population: 3104614),
+    "NH": StateInfo(capital: "Concord",      nickname: "The Granite State",           statehood: 1788, bird: "Purple Finch",               flower: "Purple Lilac",             areaSqMi: 9349,   population: 1377529),
+    "NJ": StateInfo(capital: "Trenton",      nickname: "The Garden State",            statehood: 1787, bird: "American Goldfinch",         flower: "Common Blue Violet",       areaSqMi: 8723,   population: 9288994),
+    "NM": StateInfo(capital: "Santa Fe",     nickname: "Land of Enchantment",         statehood: 1912, bird: "Greater Roadrunner",         flower: "Yucca Flower",             areaSqMi: 121590, population: 2117522),
+    "NY": StateInfo(capital: "Albany",       nickname: "The Empire State",            statehood: 1788, bird: "Eastern Bluebird",           flower: "Rose",                     areaSqMi: 54555,  population: 20201249),
+    "NC": StateInfo(capital: "Raleigh",      nickname: "The Tar Heel State",          statehood: 1789, bird: "Northern Cardinal",          flower: "Dogwood",                  areaSqMi: 53819,  population: 10439388),
+    "ND": StateInfo(capital: "Bismarck",     nickname: "The Peace Garden State",      statehood: 1889, bird: "Western Meadowlark",         flower: "Wild Prairie Rose",        areaSqMi: 70698,  population: 779094),
+    "OH": StateInfo(capital: "Columbus",     nickname: "The Buckeye State",           statehood: 1803, bird: "Northern Cardinal",          flower: "Scarlet Carnation",        areaSqMi: 44826,  population: 11799448),
+    "OK": StateInfo(capital: "Oklahoma City", nickname: "The Sooner State",           statehood: 1907, bird: "Scissor-tailed Flycatcher",  flower: "Oklahoma Rose",            areaSqMi: 69899,  population: 3959353),
+    "OR": StateInfo(capital: "Salem",        nickname: "The Beaver State",            statehood: 1859, bird: "Western Meadowlark",         flower: "Oregon Grape",             areaSqMi: 98379,  population: 4237256),
+    "PA": StateInfo(capital: "Harrisburg",   nickname: "The Keystone State",          statehood: 1787, bird: "Ruffed Grouse",              flower: "Mountain Laurel",          areaSqMi: 46054,  population: 13002700),
+    "RI": StateInfo(capital: "Providence",   nickname: "The Ocean State",             statehood: 1790, bird: "Rhode Island Red",           flower: "Violet",                   areaSqMi: 1545,   population: 1097379),
+    "SC": StateInfo(capital: "Columbia",     nickname: "The Palmetto State",          statehood: 1788, bird: "Carolina Wren",              flower: "Yellow Jessamine",         areaSqMi: 32020,  population: 5118425),
+    "SD": StateInfo(capital: "Pierre",       nickname: "The Mount Rushmore State",    statehood: 1889, bird: "Ring-necked Pheasant",       flower: "Pasque Flower",            areaSqMi: 77116,  population: 886667),
+    "TN": StateInfo(capital: "Nashville",    nickname: "The Volunteer State",         statehood: 1796, bird: "Northern Mockingbird",       flower: "Iris",                     areaSqMi: 42144,  population: 6910840),
+    "TX": StateInfo(capital: "Austin",       nickname: "The Lone Star State",         statehood: 1845, bird: "Northern Mockingbird",       flower: "Bluebonnet",               areaSqMi: 268596, population: 29145505),
+    "UT": StateInfo(capital: "Salt Lake City", nickname: "The Beehive State",         statehood: 1896, bird: "California Gull",            flower: "Sego Lily",                areaSqMi: 84897,  population: 3271616),
+    "VT": StateInfo(capital: "Montpelier",   nickname: "The Green Mountain State",    statehood: 1791, bird: "Hermit Thrush",              flower: "Red Clover",               areaSqMi: 9616,   population: 643077),
+    "VA": StateInfo(capital: "Richmond",     nickname: "Old Dominion",                statehood: 1788, bird: "Northern Cardinal",          flower: "American Dogwood",         areaSqMi: 42775,  population: 8631393),
+    "WA": StateInfo(capital: "Olympia",      nickname: "The Evergreen State",         statehood: 1889, bird: "Willow Goldfinch",           flower: "Coast Rhododendron",       areaSqMi: 71298,  population: 7705281),
+    "WV": StateInfo(capital: "Charleston",   nickname: "The Mountain State",          statehood: 1863, bird: "Northern Cardinal",          flower: "Rhododendron",             areaSqMi: 24230,  population: 1793716),
+    "WI": StateInfo(capital: "Madison",      nickname: "The Badger State",            statehood: 1848, bird: "American Robin",             flower: "Wood Violet",              areaSqMi: 65496,  population: 5893718),
+    "WY": StateInfo(capital: "Cheyenne",     nickname: "The Equality State",          statehood: 1890, bird: "Western Meadowlark",         flower: "Indian Paintbrush",        areaSqMi: 97813,  population: 576851),
+    "DC": StateInfo(capital: "Washington",   nickname: "The Nation's Capital",        statehood: 1790, bird: "Wood Thrush",                flower: "American Beauty Rose",     areaSqMi: 68,     population: 689545),
+]
+
+// US Census Bureau region classification (50 states, DC excluded)
+let stateRegions: [String: String] = [
+    "CT": "Northeast", "ME": "Northeast", "MA": "Northeast", "NH": "Northeast",
+    "RI": "Northeast", "VT": "Northeast", "NJ": "Northeast", "NY": "Northeast", "PA": "Northeast",
+    "IL": "Midwest", "IN": "Midwest", "MI": "Midwest", "OH": "Midwest",
+    "WI": "Midwest", "IA": "Midwest", "KS": "Midwest", "MN": "Midwest",
+    "MO": "Midwest", "NE": "Midwest", "ND": "Midwest", "SD": "Midwest",
+    "DE": "South", "FL": "South", "GA": "South", "MD": "South",
+    "NC": "South", "SC": "South", "VA": "South", "WV": "South",
+    "AL": "South", "KY": "South", "MS": "South", "TN": "South",
+    "AR": "South", "LA": "South", "OK": "South", "TX": "South",
+    "AZ": "West", "CO": "West", "ID": "West", "MT": "West", "NV": "West",
+    "NM": "West", "UT": "West", "WY": "West", "AK": "West", "CA": "West",
+    "HI": "West", "OR": "West", "WA": "West"
+]
+
+// MARK: - Achievements
+
+struct Achievement: Identifiable {
+    let id: String
+    let title: String
+    let description: String
+    let icon: String
+    let isUnlocked: (Set<String>) -> Bool
+}
+
+let achievements: [Achievement] = [
+    Achievement(id: "first_step",     title: "First Step",           description: "Mark your first state as visited",
+                icon: "star.fill",
+                isUnlocked: { $0.filter { $0 != "DC" }.count >= 1 }),
+    Achievement(id: "road_tripper",   title: "Road Tripper",         description: "Visit 10 states",
+                icon: "car.fill",
+                isUnlocked: { $0.filter { $0 != "DC" }.count >= 10 }),
+    Achievement(id: "quarter",        title: "Quarter Century",      description: "Visit 25 states",
+                icon: "flag.fill",
+                isUnlocked: { $0.filter { $0 != "DC" }.count >= 25 }),
+    Achievement(id: "almost_there",   title: "Almost There",         description: "Visit 40 states",
+                icon: "trophy.fill",
+                isUnlocked: { $0.filter { $0 != "DC" }.count >= 40 }),
+    Achievement(id: "all_50",         title: "All 50 States!",       description: "Visit every US state",
+                icon: "crown.fill",
+                isUnlocked: { $0.filter { $0 != "DC" }.count >= 50 }),
+    Achievement(id: "new_england",    title: "New England Complete", description: "Visit all 6 New England states (CT, ME, MA, NH, RI, VT)",
+                icon: "leaf.fill",
+                isUnlocked: { codes in ["CT","ME","MA","NH","RI","VT"].allSatisfy { codes.contains($0) } }),
+    Achievement(id: "founding_13",    title: "Founding 13",          description: "Visit all 13 original colonies",
+                icon: "scroll.fill",
+                isUnlocked: { codes in ["CT","DE","GA","MD","MA","NH","NJ","NY","NC","PA","RI","SC","VA"].allSatisfy { codes.contains($0) } }),
+    Achievement(id: "four_corners",   title: "Four Corners",         description: "Visit AZ, CO, NM, and UT",
+                icon: "viewfinder",
+                isUnlocked: { codes in ["AZ","CO","NM","UT"].allSatisfy { codes.contains($0) } }),
+    Achievement(id: "great_lakes",    title: "Great Lakes Explorer", description: "Visit all 6 Great Lakes states (IL, IN, MI, MN, OH, WI)",
+                icon: "water.waves",
+                isUnlocked: { codes in ["IL","IN","MI","MN","OH","WI"].allSatisfy { codes.contains($0) } }),
+    Achievement(id: "coast_to_coast", title: "Coast to Coast",       description: "Visit both California and New York",
+                icon: "arrow.left.and.right",
+                isUnlocked: { codes in codes.contains("CA") && codes.contains("NY") }),
+    Achievement(id: "aloha",          title: "Aloha Spirit",         description: "Visit Hawaii",
+                icon: "sun.horizon.fill",
+                isUnlocked: { codes in codes.contains("HI") }),
+    Achievement(id: "last_frontier",  title: "Last Frontier",        description: "Visit Alaska",
+                icon: "snowflake",
+                isUnlocked: { codes in codes.contains("AK") }),
+    Achievement(id: "island_hopper",  title: "Island Hopper",        description: "Visit both Hawaii and Alaska",
+                icon: "airplane",
+                isUnlocked: { codes in codes.contains("HI") && codes.contains("AK") }),
+    Achievement(id: "nations_capital", title: "Nation's Capital",    description: "Visit Washington DC",
+                icon: "building.columns.fill",
+                isUnlocked: { codes in codes.contains("DC") }),
+    Achievement(id: "lone_star",      title: "Everything's Bigger",  description: "Visit Texas",
+                icon: "star.circle.fill",
+                isUnlocked: { codes in codes.contains("TX") }),
+    Achievement(id: "deep_south",     title: "Deep South",           description: "Visit AL, GA, LA, MS, and SC",
+                icon: "music.note",
+                isUnlocked: { codes in ["AL","GA","LA","MS","SC"].allSatisfy { codes.contains($0) } }),
 ]
 
 // MARK: - Flight Search Data
@@ -917,6 +1061,12 @@ struct StateDetailView: View {
 
     var body: some View {
         List {
+            if let info = stateInfoData[visitedState.code] {
+                Section("State Facts") {
+                    statFactsContent(info)
+                }
+            }
+
             Section {
                 ForEach(sortedVisits) { visit in
                     VisitRow(visit: visit) { deleteVisit(visit) }
@@ -1140,6 +1290,64 @@ struct StateDetailView: View {
                                longitude: coordinate.longitude)
         visitedState.cities.append(city)
         try? modelContext.save()
+    }
+
+    // MARK: State Facts helpers
+
+    @ViewBuilder
+    private func statFactsContent(_ info: StateInfo) -> some View {
+        Grid(alignment: .topLeading, horizontalSpacing: 12, verticalSpacing: 14) {
+            GridRow {
+                factCell("Capital",    value: info.capital,              icon: "building.columns")
+                factCell("Statehood",  value: "\(info.statehood)",       icon: "calendar")
+            }
+            GridRow {
+                factCell("Area",       value: formatArea(info.areaSqMi), icon: "ruler")
+                factCell("Population", value: formatPop(info.population), icon: "person.2")
+            }
+            GridRow {
+                factCell("State Bird", value: info.bird,                 icon: "bird")
+                factCell("State Flower", value: info.flower,             icon: "leaf")
+            }
+            GridRow {
+                factCell("Nickname",   value: info.nickname,             icon: "quote.bubble")
+                    .gridCellColumns(2)
+            }
+        }
+        .padding(.vertical, 6)
+    }
+
+    @ViewBuilder
+    private func factCell(_ label: String, value: String, icon: String) -> some View {
+        HStack(alignment: .top, spacing: 8) {
+            Image(systemName: icon)
+                .foregroundStyle(.secondary)
+                .frame(width: 20, alignment: .center)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .textCase(.uppercase)
+                Text(value)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func formatArea(_ sqMi: Int) -> String {
+        let fmt = NumberFormatter(); fmt.numberStyle = .decimal
+        return (fmt.string(from: NSNumber(value: sqMi)) ?? "\(sqMi)") + " mi²"
+    }
+
+    private func formatPop(_ n: Int) -> String {
+        if n >= 1_000_000 { return String(format: "%.1fM", Double(n) / 1_000_000) }
+        if n >= 1_000     { return String(format: "%.0fK", Double(n) / 1_000) }
+        return "\(n)"
     }
 
     @MainActor
@@ -1426,6 +1634,137 @@ struct StateDetailView: View {
     }
 }
 
+// MARK: - Shared image export (used by both iPhone list and iPad sidebar)
+func makeStatesVisitedImage(visitedList: [USState]) -> UIImage? {
+    let cols = 6
+    let canvasW: CGFloat = 1080
+    let hPad: CGFloat = 44
+    let cellW = (canvasW - 2 * hPad) / CGFloat(cols)
+    let flagW = cellW - 10
+    let flagH = flagW * (22.0 / 36.0)
+    let nameH: CGFloat = 18
+    let cellH = flagH + 6 + nameH + 16
+
+    let visitedCodes = Set(visitedList.map { $0.id })
+    let pendingList = allUSStates.filter { !visitedCodes.contains($0.id) }
+
+    let visitedRows = max(1, (visitedList.count + cols - 1) / cols)
+    let pendingRows = max(1, (pendingList.count + cols - 1) / cols)
+
+    let titleAreaH: CGFloat = 150
+    let sectionHeaderH: CGFloat = 56
+    let sectionGap: CGFloat = 36
+    let bottomPad: CGFloat = 60
+
+    let totalH = titleAreaH
+                 + sectionHeaderH + CGFloat(visitedRows) * cellH
+                 + sectionGap
+                 + sectionHeaderH + CGFloat(pendingRows) * cellH
+                 + bottomPad
+
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: canvasW, height: totalH))
+    return renderer.image { ctx in
+        let cg = ctx.cgContext
+
+        UIColor.white.setFill()
+        cg.fill(CGRect(x: 0, y: 0, width: canvasW, height: totalH))
+
+        var y: CGFloat = 48
+
+        let titleAttrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 46, weight: .bold),
+            .foregroundColor: UIColor(red: 0.08, green: 0.08, blue: 0.12, alpha: 1)
+        ]
+        NSAttributedString(string: "States Visited", attributes: titleAttrs)
+            .draw(at: CGPoint(x: hPad, y: y))
+        y += 58
+
+        let visitedNonDC = visitedList.filter { $0.id != "DC" }.count
+        let pct = visitedNonDC == 0 ? 0 : visitedNonDC * 100 / 50
+        let subAttrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 22, weight: .regular),
+            .foregroundColor: UIColor.systemGray
+        ]
+        NSAttributedString(string: "\(visitedNonDC) of 50 states visited  ·  \(pct)%",
+                           attributes: subAttrs)
+            .draw(at: CGPoint(x: hPad, y: y))
+        y += 34
+
+        cg.setFillColor(UIColor(red: 0.82, green: 0.82, blue: 0.86, alpha: 1).cgColor)
+        cg.fill(CGRect(x: hPad, y: y, width: canvasW - 2 * hPad, height: 1.5))
+        y += 20
+
+        func drawGrid(states: [USState], headerText: String, accentColor: UIColor, countText: String) {
+            let headerAttrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 24, weight: .semibold),
+                .foregroundColor: accentColor
+            ]
+            let countAttrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 24, weight: .semibold),
+                .foregroundColor: UIColor(red: 0.25, green: 0.25, blue: 0.3, alpha: 1)
+            ]
+            let secStr = NSMutableAttributedString()
+            secStr.append(NSAttributedString(string: headerText, attributes: headerAttrs))
+            secStr.append(NSAttributedString(string: countText, attributes: countAttrs))
+            secStr.draw(at: CGPoint(x: hPad, y: y))
+            y += sectionHeaderH
+
+            for (i, state) in states.enumerated() {
+                let col = CGFloat(i % cols)
+                let row = CGFloat(i / cols)
+                let cellX = hPad + col * cellW
+                let cellY = y + row * cellH
+
+                let flagX = cellX + (cellW - flagW) / 2
+                let flagRect = CGRect(x: flagX, y: cellY, width: flagW, height: flagH)
+                let rounded = UIBezierPath(roundedRect: flagRect, cornerRadius: 5)
+
+                if let img = UIImage(named: state.id) {
+                    cg.saveGState()
+                    rounded.addClip()
+                    img.draw(in: flagRect)
+                    cg.restoreGState()
+                    cg.setStrokeColor(UIColor.gray.withAlphaComponent(0.2).cgColor)
+                    cg.setLineWidth(1)
+                    rounded.stroke()
+                } else {
+                    cg.setFillColor(accentColor.withAlphaComponent(0.10).cgColor)
+                    rounded.fill()
+                    let codeAttrs: [NSAttributedString.Key: Any] = [
+                        .font: UIFont.systemFont(ofSize: 14, weight: .bold),
+                        .foregroundColor: accentColor
+                    ]
+                    let codeStr = NSAttributedString(string: state.id, attributes: codeAttrs)
+                    let sz = codeStr.size()
+                    codeStr.draw(at: CGPoint(x: flagRect.midX - sz.width / 2,
+                                             y: flagRect.midY - sz.height / 2))
+                }
+
+                let nameAttrs: [NSAttributedString.Key: Any] = [
+                    .font: UIFont.systemFont(ofSize: 12, weight: .regular),
+                    .foregroundColor: UIColor(red: 0.35, green: 0.35, blue: 0.4, alpha: 1)
+                ]
+                let nameStr = NSAttributedString(string: state.name, attributes: nameAttrs)
+                let nameW = nameStr.size().width
+                let nameX = max(cellX, min(cellX + cellW - nameW, flagX + (flagW - nameW) / 2))
+                nameStr.draw(at: CGPoint(x: nameX, y: cellY + flagH + 5))
+            }
+
+            let rows = max(1, (states.count + cols - 1) / cols)
+            y += CGFloat(rows) * cellH
+        }
+
+        let nonDCVisited = visitedList.filter { $0.id != "DC" }.count
+        let dcVisited = visitedList.contains { $0.id == "DC" }
+        let visitedCountText = dcVisited
+            ? " (\(nonDCVisited)) and District of Columbia"
+            : " (\(nonDCVisited))"
+        drawGrid(states: visitedList, headerText: "✓  Visited",  accentColor: .systemGreen, countText: visitedCountText)
+        y += sectionGap
+        drawGrid(states: pendingList, headerText: "○  To Visit", accentColor: .systemGray,  countText: " (\(pendingList.count))")
+    }
+}
+
 // MARK: - Sidebar list with toggles
 struct StatesListView: View {
     var onMapTap: (() -> Void)? = nil
@@ -1613,7 +1952,7 @@ struct StatesListView: View {
     }
 
     private func prepareShare() {
-        if let img = generateStatesImage() {
+        if let img = makeStatesVisitedImage(visitedList: visitedStatesList) {
             shareableReport = ShareableImage(image: img)
         }
     }
@@ -2103,6 +2442,178 @@ struct FlightRow: View {
     }
 }
 
+// MARK: - Stats View
+struct StatsView: View {
+    @Query(sort: [SortDescriptor<VisitedState>(\.code)]) private var visited: [VisitedState]
+
+    private var visitedCodes: Set<String>  { Set(visited.map { $0.code }) }
+    private var visitedNonDC: Int          { visited.filter { $0.code != "DC" }.count }
+    private var totalCities: Int           { visited.reduce(0) { $0 + $1.cities.count } }
+    private var totalPhotos: Int           { visited.reduce(0) { $0 + $1.photos.count } }
+    private var totalTrips: Int            { visited.reduce(0) { $0 + $1.visits.count } }
+    private var unlockedCount: Int         { achievements.filter { $0.isUnlocked(visitedCodes) }.count }
+
+    private var regionData: [(region: String, visited: Int, total: Int, color: Color)] {[
+        ("Northeast", count(in: "Northeast"), total(in: "Northeast"), .blue),
+        ("South",     count(in: "South"),     total(in: "South"),     .red),
+        ("Midwest",   count(in: "Midwest"),   total(in: "Midwest"),   .orange),
+        ("West",      count(in: "West"),      total(in: "West"),      .green),
+    ]}
+
+    private func count(in region: String) -> Int { visitedCodes.filter { stateRegions[$0] == region }.count }
+    private func total(in region: String) -> Int { stateRegions.values.filter { $0 == region }.count }
+
+    private var yearData: [(year: Int, count: Int)] {
+        var yearCounts: [Int: Int] = [:]
+        let cal = Calendar.current
+        for state in visited {
+            guard let firstDate = state.visits.compactMap({ $0.startDate }).min() else { continue }
+            let year = cal.component(.year, from: firstDate)
+            yearCounts[year, default: 0] += 1
+        }
+        return yearCounts.map { (year: $0.key, count: $0.value) }.sorted { $0.year < $1.year }
+    }
+
+    var body: some View {
+        List {
+            Section {
+                progressRing
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets())
+
+            Section("Overview") {
+                statRow("States Visited",  value: "\(visitedNonDC) of 50",         icon: "map.fill",        color: .blue)
+                statRow("Cities Explored", value: "\(totalCities)",                icon: "building.2.fill", color: .purple)
+                statRow("Photos Added",    value: "\(totalPhotos)",                icon: "photo.fill",      color: .pink)
+                statRow("Trips Logged",    value: "\(totalTrips)",                 icon: "suitcase.fill",   color: .orange)
+                statRow("Achievements",    value: "\(unlockedCount) of \(achievements.count)", icon: "trophy.fill", color: .yellow)
+            }
+
+            Section("Progress by Region") {
+                ForEach(regionData, id: \.region) { item in regionRow(item) }
+            }
+
+            if !yearData.isEmpty {
+                Section("States First Visited by Year") {
+                    Chart(yearData, id: \.year) { item in
+                        BarMark(
+                            x: .value("Year", String(item.year)),
+                            y: .value("States", item.count)
+                        )
+                        .foregroundStyle(Color.blue.gradient)
+                    }
+                    .chartYAxis { AxisMarks(values: .automatic(desiredCount: 4)) }
+                    .frame(height: 160)
+                    .padding(.vertical, 8)
+                    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                }
+            }
+
+            let unlocked = achievements.filter {  $0.isUnlocked(visitedCodes) }
+            let locked   = achievements.filter { !$0.isUnlocked(visitedCodes) }
+            Section("Achievements (\(unlockedCount)/\(achievements.count))") {
+                ForEach(unlocked) { a in achievementRow(a, earned: true)  }
+                ForEach(locked)   { a in achievementRow(a, earned: false) }
+            }
+        }
+        .navigationTitle("My Stats")
+    }
+
+    @ViewBuilder
+    private var progressRing: some View {
+        VStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .stroke(Color.secondary.opacity(0.15), lineWidth: 18)
+                    .frame(width: 150, height: 150)
+                Circle()
+                    .trim(from: 0, to: CGFloat(visitedNonDC) / 50.0)
+                    .stroke(
+                        AngularGradient(gradient: Gradient(colors: [.blue, .green]), center: .center),
+                        style: StrokeStyle(lineWidth: 18, lineCap: .round)
+                    )
+                    .frame(width: 150, height: 150)
+                    .rotationEffect(.degrees(-90))
+                VStack(spacing: 2) {
+                    Text("\(visitedNonDC)")
+                        .font(.system(size: 46, weight: .bold, design: .rounded))
+                    Text("of 50 states")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Text("\(visitedNonDC * 100 / 50)% of the USA explored")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 28)
+    }
+
+    @ViewBuilder
+    private func statRow(_ label: String, value: String, icon: String, color: Color) -> some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundStyle(.white)
+                .frame(width: 30, height: 30)
+                .background(color, in: RoundedRectangle(cornerRadius: 7))
+            Text(label)
+            Spacer()
+            Text(value).foregroundStyle(.secondary).fontWeight(.medium)
+        }
+    }
+
+    @ViewBuilder
+    private func regionRow(_ item: (region: String, visited: Int, total: Int, color: Color)) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(item.region).fontWeight(.medium)
+                Spacer()
+                Text("\(item.visited) of \(item.total)")
+                    .font(.subheadline).foregroundStyle(.secondary)
+            }
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(item.color.opacity(0.15))
+                    Capsule().fill(item.color)
+                        .frame(width: item.total > 0
+                               ? geo.size.width * CGFloat(item.visited) / CGFloat(item.total)
+                               : 0)
+                }
+            }
+            .frame(height: 8)
+        }
+        .padding(.vertical, 4)
+    }
+
+    @ViewBuilder
+    private func achievementRow(_ achievement: Achievement, earned: Bool) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: achievement.icon)
+                .font(.title3)
+                .foregroundStyle(earned ? .yellow : Color.secondary.opacity(0.4))
+                .frame(width: 36, height: 36)
+                .background(
+                    Circle().fill(earned ? Color.yellow.opacity(0.15) : Color.secondary.opacity(0.08))
+                )
+            VStack(alignment: .leading, spacing: 2) {
+                Text(achievement.title)
+                    .fontWeight(.medium)
+                    .foregroundStyle(earned ? .primary : .secondary)
+                Text(achievement.description)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            if earned {
+                Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+            }
+        }
+        .opacity(earned ? 1.0 : 0.55)
+    }
+}
+
 // MARK: - Bucket List
 struct BucketListView: View {
     @Environment(\.modelContext) private var modelContext
@@ -2240,6 +2751,378 @@ struct ActivityView: UIViewControllerRepresentable {
     func updateUIViewController(_ vc: UIActivityViewController, context: Context) {}
 }
 
+// MARK: - iPad States Sidebar
+
+private enum SidebarFilter: Int, CaseIterable {
+    case all, visited, notVisited
+    var label: String {
+        switch self {
+        case .all:        return "All"
+        case .visited:    return "Visited"
+        case .notVisited: return "Not Visited"
+        }
+    }
+}
+
+struct StatesSidebarList: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: [SortDescriptor<VisitedState>(\.code)]) private var visited: [VisitedState]
+    @Binding var selectedCode: String?
+    @AppStorage("homeStateCode") private var homeStateCode: String = ""
+    @AppStorage("colorSchemePreference") private var colorSchemeRaw: Int = 0
+    @State private var search = ""
+    @State private var shareableReport: ShareableImage? = nil
+    @State private var sidebarFilter: SidebarFilter = .all
+
+    private var visitedStatesList: [USState] {
+        let codes = visitedCodes
+        return allUSStates.filter { codes.contains($0.id) }
+    }
+
+    private var visitedCodes: Set<String>  { Set(visited.map { $0.code }) }
+    private var visitedNonDCCount: Int     { visited.filter { $0.code != "DC" }.count }
+
+    private var filteredStates: [USState] {
+        let base: [USState]
+        switch sidebarFilter {
+        case .all:        base = allUSStates
+        case .visited:    base = allUSStates.filter { visitedCodes.contains($0.id) }
+        case .notVisited: base = allUSStates.filter { !visitedCodes.contains($0.id) }
+        }
+        let q = search.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !q.isEmpty else { return base }
+        return base.filter { $0.name.lowercased().contains(q) || $0.id.lowercased().contains(q) }
+    }
+
+    private var appearanceIcon: String {
+        switch colorSchemeRaw {
+        case 1: return "sun.max.fill"
+        case 2: return "moon.fill"
+        default: return "circle.lefthalf.filled"
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Picker("Filter", selection: $sidebarFilter) {
+                ForEach(SidebarFilter.allCases, id: \.rawValue) { f in
+                    Text(f.label).tag(f)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(Color(UIColor.systemGroupedBackground))
+
+            List {
+                Section {
+                    // Tapping the row label toggles selection (tap again = deselect).
+                    // The Toggle on the right handles visited status independently.
+                    ForEach(filteredStates) { state in
+                        sidebarRow(for: state)
+                            .listRowBackground(
+                                selectedCode == state.id
+                                    ? Color.accentColor.opacity(0.12)
+                                    : nil
+                            )
+                    }
+                } header: {
+                    Text("Visited \(visitedNonDCCount) of 50 states · \(visitedNonDCCount * 100 / 50)%")
+                        .textCase(nil)
+                        .font(.subheadline.weight(.medium))
+                }
+            }
+            .searchable(text: $search, placement: .sidebar)
+        }
+        .navigationTitle("🇺🇸 States")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    if let img = makeStatesVisitedImage(visitedList: visitedStatesList) {
+                        shareableReport = ShareableImage(image: img)
+                    }
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Picker("Appearance", selection: $colorSchemeRaw) {
+                        Label("System", systemImage: "circle.lefthalf.filled").tag(0)
+                        Label("Light", systemImage: "sun.max").tag(1)
+                        Label("Dark", systemImage: "moon").tag(2)
+                    }
+                } label: {
+                    Image(systemName: appearanceIcon)
+                }
+            }
+        }
+        .sheet(item: $shareableReport) { item in
+            ActivityView(activityItems: [item.image])
+        }
+    }
+
+    @ViewBuilder
+    private func sidebarRow(for state: USState) -> some View {
+        let isVisited = visitedCodes.contains(state.id)
+        HStack(spacing: 0) {
+            // Tappable label area: tap once to select, tap again to deselect
+            Button {
+                selectedCode = (selectedCode == state.id) ? nil : state.id
+            } label: {
+                HStack(spacing: 10) {
+                    sidebarFlagImage(for: state.id)
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack(spacing: 5) {
+                            Text(state.name)
+                            if homeStateCode == state.id {
+                                Image(systemName: "house.fill").font(.caption).foregroundStyle(.orange)
+                            }
+                            if isVisited {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.caption).foregroundStyle(.green)
+                            }
+                        }
+                        if isVisited,
+                           let vs = visited.first(where: { $0.code == state.id }),
+                           vs.visits.count > 0 {
+                            let c = vs.visits.count
+                            Text(c == 1 ? "1 visit" : "\(c) visits")
+                                .font(.caption).foregroundStyle(.secondary)
+                        }
+                    }
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            // Toggle: separate hit area — does not affect row selection
+            Toggle(isOn: Binding(
+                get: { isVisited },
+                set: { on in Task { await toggleVisited(on, code: state.id) } }
+            )) { EmptyView() }
+                .labelsHidden()
+                .fixedSize()
+                .padding(.leading, 8)
+        }
+    }
+
+    @ViewBuilder
+    private func sidebarFlagImage(for code: String) -> some View {
+        let shape = RoundedRectangle(cornerRadius: 3)
+        if let img = UIImage(named: code) {
+            Image(uiImage: img).resizable().scaledToFill()
+                .frame(width: 36, height: 22).clipShape(shape)
+                .overlay(shape.stroke(Color.gray.opacity(0.3), lineWidth: 0.5))
+        } else {
+            shape.fill(Color.gray.opacity(0.12))
+                .frame(width: 36, height: 22)
+                .overlay(shape.stroke(Color.gray.opacity(0.2), lineWidth: 0.5))
+        }
+    }
+
+    @MainActor
+    private func toggleVisited(_ on: Bool, code: String) async {
+        if on {
+            guard !visited.contains(where: { $0.code == code }) else { return }
+            modelContext.insert(VisitedState(code: code))
+            try? modelContext.save()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        } else {
+            guard let obj = visited.first(where: { $0.code == code }) else { return }
+            modelContext.delete(obj)
+            try? modelContext.save()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+    }
+}
+
+// MARK: - Unvisited State Detail Panel
+// Shows state facts only for states not yet marked as visited.
+struct UnvisitedStatePanel: View {
+    let state: USState
+
+    var body: some View {
+        List {
+            if let info = stateInfoData[state.id] {
+                Section("State Facts") {
+                    stateFactsGrid(info)
+                }
+            }
+        }
+        .navigationTitle(state.name)
+        .navigationBarTitleDisplayMode(.large)
+    }
+
+    @ViewBuilder
+    private func stateFactsGrid(_ info: StateInfo) -> some View {
+        Grid(alignment: .topLeading, horizontalSpacing: 12, verticalSpacing: 14) {
+            GridRow {
+                factCell("Capital",      value: info.capital,               icon: "building.columns")
+                factCell("Statehood",    value: "\(info.statehood)",        icon: "calendar")
+            }
+            GridRow {
+                factCell("Area",         value: formatArea(info.areaSqMi),  icon: "ruler")
+                factCell("Population",   value: formatPop(info.population), icon: "person.2")
+            }
+            GridRow {
+                factCell("State Bird",   value: info.bird,                  icon: "bird")
+                factCell("State Flower", value: info.flower,                icon: "leaf")
+            }
+            GridRow {
+                factCell("Nickname", value: info.nickname, icon: "quote.bubble")
+                    .gridCellColumns(2)
+            }
+        }
+        .padding(.vertical, 6)
+    }
+
+    @ViewBuilder
+    private func factCell(_ label: String, value: String, icon: String) -> some View {
+        HStack(alignment: .top, spacing: 8) {
+            Image(systemName: icon)
+                .foregroundStyle(.secondary)
+                .frame(width: 20, alignment: .center)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .textCase(.uppercase)
+                Text(value)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func formatArea(_ sqMi: Int) -> String {
+        let fmt = NumberFormatter(); fmt.numberStyle = .decimal
+        return (fmt.string(from: NSNumber(value: sqMi)) ?? "\(sqMi)") + " mi²"
+    }
+
+    private func formatPop(_ n: Int) -> String {
+        if n >= 1_000_000 { return String(format: "%.1fM", Double(n) / 1_000_000) }
+        if n >= 1_000     { return String(format: "%.0fK", Double(n) / 1_000) }
+        return "\(n)"
+    }
+}
+
+// MARK: - iPad Right-Panel (map top half + state detail bottom half)
+struct iPadDetailView: View {
+    @Binding var selectedCode: String?
+    @ObservedObject var shapes: StateShapesLoader
+
+    @Query(sort: [SortDescriptor<VisitedState>(\.code)]) private var visited: [VisitedState]
+
+    private var selectedUSState: USState? {
+        guard let code = selectedCode else { return nil }
+        return allUSStates.first { $0.id == code }
+    }
+
+    private var visitedState: VisitedState? {
+        guard let code = selectedCode else { return nil }
+        return visited.first { $0.code == code }
+    }
+
+    var body: some View {
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                // Top half: full US map, highlights the selected state
+                ZStack(alignment: .bottomLeading) {
+                    StatesMapView(shapes: shapes,
+                                  highlightedCode: selectedCode,
+                                  zoomsOnHighlight: true)
+                    MapLegend()
+                    // Zoom-out / deselect button — only shown when a state is selected
+                    if selectedCode != nil {
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    selectedCode = nil
+                                } label: {
+                                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .foregroundStyle(.primary)
+                                        .padding(8)
+                                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
+                                }
+                                .padding(10)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
+                .frame(height: geo.size.height * 0.45)
+
+                Divider()
+
+                // Bottom half: state detail (facts only for unvisited, full for visited)
+                Group {
+                    if let state = selectedUSState {
+                        if let vs = visitedState {
+                            NavigationStack {
+                                StateDetailView(visitedState: vs,
+                                                stateName: state.name,
+                                                statePolygons: shapes.polygons[state.id] ?? [])
+                            }
+                        } else {
+                            NavigationStack {
+                                UnvisitedStatePanel(state: state)
+                            }
+                        }
+                    } else {
+                        ContentUnavailableView {
+                            Label("Select a State", systemImage: "map.fill")
+                        } description: {
+                            Text("Tap any state in the sidebar to see its facts, or toggle it as visited to track your trips.")
+                        }
+                    }
+                }
+                .frame(maxHeight: .infinity)
+            }
+        }
+        .onAppear { shapes.loadIfNeeded() }
+    }
+}
+
+// MARK: - Adaptive States Tab
+// On iPad: NavigationSplitView with states-list sidebar + map/detail right panel.
+// On iPhone: NavigationStack + StatesListView.
+// Uses UIDevice idiom (not horizontalSizeClass) so it reliably activates on
+// all iPads regardless of window split-view mode.
+struct AdaptiveStatesTab: View {
+    @Binding var highlightedCode: String?
+    var onMapTap: () -> Void
+
+    @StateObject private var shapes = StateShapesLoader()
+    @State private var selectedCode: String? = nil
+    // Force both columns visible so the sidebar is never hidden on first launch.
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
+
+    private var isIPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+
+    var body: some View {
+        if isIPad {
+            NavigationSplitView(columnVisibility: $columnVisibility) {
+                StatesSidebarList(selectedCode: $selectedCode)
+            } detail: {
+                iPadDetailView(selectedCode: $selectedCode, shapes: shapes)
+            }
+            .navigationSplitViewStyle(.balanced)
+        } else {
+            NavigationStack {
+                StatesListView(onMapTap: onMapTap, highlightedCode: $highlightedCode)
+            }
+        }
+    }
+}
+
 // MARK: - Main Content with Tabs
 struct ContentView: View {
     @State private var appState = AppState()
@@ -2257,9 +3140,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: Binding(get: { appState.selectedTab },
                                   set: { appState.selectedTab = $0 })) {
-            NavigationStack {
-                StatesListView(onMapTap: { appState.selectedTab = 1 }, highlightedCode: $highlightedCode)
-            }
+            AdaptiveStatesTab(highlightedCode: $highlightedCode, onMapTap: { appState.selectedTab = 1 })
             .tabItem {
                 Label("States", systemImage: "list.bullet")
             }
@@ -2286,6 +3167,14 @@ struct ContentView: View {
                 Label("Bucket List", systemImage: "star.circle")
             }
             .tag(2)
+
+            NavigationStack {
+                StatsView()
+            }
+            .tabItem {
+                Label("Stats", systemImage: "chart.bar.fill")
+            }
+            .tag(3)
         }
         .environment(appState)
         .preferredColorScheme(preferredScheme)
